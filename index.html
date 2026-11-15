@@ -2,409 +2,573 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#071326">
-<title>QORVEX SYSTEMS — Безопасность и инженерные решения</title>
-<meta name="description" content="Видеонаблюдение, домофоны, СКУД, шлагбаумы, пожарная сигнализация и обслуживание в Караганде.">
-<link rel="stylesheet" href="style.css">
+<title>QORVEX SYSTEMS — системы безопасности</title>
+<meta name="description" content="Видеонаблюдение, домофоны, СКУД, шлагбаумы и системы безопасности в Караганде.">
+
 <style>
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.service {
-  background: #101d30;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.service:hover {
-  transform: translateY(-5px);
-  border-color: #36a9ff;
-}
-
-.service img {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  display: block;
-}
-
-.service h3 {
-  color: #ffffff;
-  padding: 0 18px;
-  margin-top: 18px;
-}
-
-.service p {
-  color: #aab8ca;
-  padding: 0 18px 18px;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-}:root {
-  --bg:#061326;
-  --panel:#10223d;
-  --gold:#e8b957;
-  --white:#f7f8fc;
-  --muted:#b9c5d8;
+:root {
+  --bg:#071326;
+  --panel:#0d1d34;
+  --gold:#d6ad62;
+  --text:#f5f5f5;
+  --muted:#aebbd0;
 }
 * {box-sizing:border-box}
 html {scroll-behavior:smooth}
 body {
   margin:0;
+  font-family:Arial,sans-serif;
   background:var(--bg);
-  color:var(--white);
-  font:16px/1.6 Arial,sans-serif;
+  color:var(--text);
+  line-height:1.6;
 }
-a {color:inherit;text-decoration:none}
-.wrap {width:min(1200px,92%);margin:auto}
+.container {width:min(1150px,92%);margin:auto}
 header {
-  position:sticky;top:0;z-index:10;
-  background:#061326f5;
-  border-bottom:1px solid #34445e;
+  position:sticky;top:0;z-index:20;
+  background:#071326ed;
+  border-bottom:1px solid #d6ad6240;
+  backdrop-filter:blur(12px);
 }
 .nav {
-  min-height:80px;
-  display:flex;align-items:center;
-  justify-content:space-between;gap:20px;
-  flex-wrap:wrap;
+  min-height:75px;display:flex;
+  align-items:center;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;
 }
-.logo {font-size:24px;font-weight:bold;letter-spacing:3px;color:var(--gold)}
-.logo span {display:block;font-size:12px;letter-spacing:7px;text-align:center}
+.logo {font-size:23px;font-weight:bold;letter-spacing:3px;color:var(--gold)}
 nav {display:flex;gap:20px;flex-wrap:wrap}
+nav a {color:white;text-decoration:none;font-size:14px}
 nav a:hover {color:var(--gold)}
 .hero {
-  padding:100px 0;
-  background:
-    linear-gradient(90deg,#061326 10%,#061326dd 65%,#06132688),
-    url("https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1800&q=85") center/cover;
+  min-height:560px;display:flex;align-items:center;
+  background:linear-gradient(90deg,#071326f5,#071326a8),
+  url("https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1800&q=85") center/cover;
 }
-.hero-content {max-width:750px}
-.eyebrow {color:var(--gold);letter-spacing:3px;font-size:13px}
-h1 {font-size:clamp(38px,6vw,68px);line-height:1.08;margin:20px 0}
-h1 span,.gold {color:var(--gold)}
-.hero p {font-size:19px;color:var(--muted)}
+.hero-content {max-width:700px;padding:85px 0}
+.eyebrow {color:var(--gold);letter-spacing:4px;text-transform:uppercase}
+h1 {font-size:clamp(36px,6vw,65px);line-height:1.1;margin:15px 0}
+h2 {font-size:34px;margin:0 0 15px}
+h3 {margin:10px 0;color:var(--gold)}
+p {color:var(--muted)}
 .btn {
-  display:inline-block;padding:14px 24px;
-  border-radius:30px;background:var(--gold);
-  color:#111827;font-weight:bold;border:0;
-  cursor:pointer;margin:8px 8px 8px 0;
+  display:inline-block;padding:13px 22px;
+  background:var(--gold);color:#071326;
+  border:0;border-radius:5px;
+  text-decoration:none;font-weight:bold;cursor:pointer;
 }
-.btn:hover {filter:brightness(1.12)}
-.btn-outline {background:transparent;color:white;border:1px solid var(--gold)}
-section {padding:65px 0}
-.section-title {font-size:34px;margin:0 0 10px}
-.section-description {color:var(--muted);margin-bottom:30px}
-.services,.projects {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+.btn-outline {
+  background:transparent;color:var(--gold);
+  border:1px solid var(--gold);
 }
-.service,.project {
-  background:var(--panel);
-  border:1px solid #34445e;
-  border-radius:12px;
-  overflow:hidden;
+section {padding:75px 0}
+.section-head {margin-bottom:30px}
+.grid {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
 }
-.service {padding:25px}
-.service .symbol {font-size:36px;color:var(--gold)}
-.service h3,.project h3 {color:var(--gold)}
-.service p,.project p {color:var(--muted)}
-.project img {
-  width:100%;height:190px;
-  object-fit:cover;display:block;
+.service,.equipment-card,.work-card,.contact-card {
+  background:var(--panel);border:1px solid #ffffff15;
+  border-radius:10px;padding:23px;
 }
-.project-content {padding:18px}
-.about {background:#0a192c}
-.about p {max-width:850px;color:var(--muted)}
-.advantages {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;
+.service {transition:.25s}
+.service:hover {transform:translateY(-5px);border-color:var(--gold)}
+.symbol {font-size:30px;color:var(--gold)}
+.equipment-card {padding:12px;overflow:hidden}
+.equipment-card img {
+  width:100%;height:190px;object-fit:cover;
+  border-radius:7px;background:#14243a;
 }
-.advantage {
-  padding:20px;background:var(--panel);
-  border:1px solid #34445e;border-radius:10px;
+.equipment-card h3 {padding:0 8px}
+.equipment-card p {padding:0 8px}
+.work-card img {width:100%;height:220px;object-fit:cover;border-radius:7px}
+.category-buttons {display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}
+.category-buttons button {
+  padding:10px 15px;background:var(--panel);
+  border:1px solid #d6ad6260;color:white;
+  border-radius:5px;cursor:pointer;
 }
-.advantage strong {color:var(--gold);display:block;font-size:20px}
-.contact {background:#0b1d33}
-form {max-width:650px;display:grid;gap:13px}
+.category-buttons button.active {background:var(--gold);color:#071326}
+.advantages {background:#0a192d}
+.contact-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+form {display:grid;gap:12px;max-width:650px}
 input,textarea,select {
-  width:100%;padding:14px;
-  border:1px solid #53627a;border-radius:7px;
-  background:#061326;color:white;font:inherit;
+  width:100%;padding:13px;border-radius:5px;
+  border:1px solid #ffffff30;background:#10233c;color:white;
+  font:inherit;
 }
-textarea {min-height:120px}
-footer {
-  padding:30px 0;text-align:center;
-  border-top:1px solid #34445e;color:var(--muted);
+textarea {min-height:120px;resize:vertical}
+footer {padding:30px 0;border-top:1px solid #ffffff20;text-align:center}
+.small {font-size:13px;color:#8c9bb2}
+#editorModal {
+  display:none;position:fixed;inset:0;z-index:100;
+  background:#000b;overflow:auto;padding:20px;
 }
-.editor-button {
-  position:fixed;right:16px;bottom:16px;z-index:20;
-  background:#10223d;color:var(--gold);
-  border:1px solid var(--gold);border-radius:25px;
-  padding:13px 18px;cursor:pointer;
+.modal-box {
+  max-width:650px;margin:35px auto;background:#0d1d34;
+  border:1px solid #d6ad62;border-radius:10px;padding:25px;
 }
-.editor {
-  display:none;position:fixed;inset:0;z-index:30;
-  overflow:auto;background:#020814ed;padding:20px;
+.modal-box input,.modal-box select {margin:6px 0 12px}
+.admin-actions {display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
+.photo-row {
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;padding:10px;border-bottom:1px solid #ffffff20;
 }
-.editor-box {
-  max-width:700px;margin:30px auto;
-  background:#10223d;border:1px solid var(--gold);
-  border-radius:12px;padding:25px;
-}
-.editor-box label {display:block;margin-top:15px;color:var(--gold)}
-.editor-box input {margin-top:5px}
-.editor-box h2 {color:var(--gold)}
-@media(max-width:700px) {
+.danger {background:#a83232;color:white}
+.hidden {display:none!important}
+@media(max-width:650px) {
   .nav {padding:15px 0}
-  nav {gap:12px;font-size:13px}
-  .hero {padding:65px 0}
-  section {padding:45px 0}
+  nav {gap:12px}
+  .hero {min-height:480px}
+  section {padding:55px 0}
 }
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="wrap nav">
-  <a class="logo" href="#home">QORVEX <span>SYSTEMS</span></a>
-  <nav>
-   <a href="#home">Главная</a>
-   <a href="#services">Услуги</a>
-   <a href="#works">Наши работы</a>
-   <a href="#about">О компании</a>
-   <a href="#contacts">Контакты</a>
-  </nav>
- </div>
+  <div class="container nav">
+    <div class="logo">QORVEX SYSTEMS</div>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#equipment">Оборудование</a>
+      <a href="#works">Работы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-<section class="hero" id="home">
- <div class="wrap hero-content">
-  <div class="eyebrow">КАРАГАНДА · С 2010 ГОДА</div>
-  <h1 id="mainTitle">Ваша безопасность — <span>наша работа!</span></h1>
-  <p id="mainSlogan">Ваше спокойствие — наша репутация.</p>
-  <p>Комплексные системы безопасности и инженерные решения для дома, бизнеса и объектов любой сложности.</p>
-  <a class="btn" href="#request">Оставить заявку →</a>
-  <a class="btn btn-outline" href="https://wa.me/77474030870">WhatsApp →</a>
- </div>
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">Безопасность и технологии</div>
+      <h1>ВАША БЕЗОПАСНОСТЬ — НАША РАБОТА</h1>
+      <p>Проектирование, монтаж и обслуживание систем безопасности и инженерных решений.</p>
+      <a class="btn" href="#request">Оставить заявку</a>
+      <a class="btn btn-outline" href="https://wa.me/77474030870" target="_blank">WhatsApp</a>
+    </div>
+  </div>
 </section>
 
 <section id="services">
- <div class="wrap">
-  <h2 class="section-title">Наши <span class="gold">услуги</span></h2>
-  <p class="section-description">Профессиональный монтаж и обслуживание систем безопасности.</p>
-  <div class="services">
-  <div class="services-grid">
-
-  <article class="service">
-    <img src=https://securityrussia.com/upload/iblock/230/hw62obchq1i5hk5tgafqkuzjz9s1ozb0/blog_622.jpg alt="Видеонаблюдение">
-    <h3>Видеонаблюдение</h3>
-    <p>IP и аналоговые камеры, видеорегистраторы, удалённый просмотр.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsFL3nnNvIqlI2ZClQj8TvoK9KAPfY8NDcmZnCGjxgUuxosr02JfbuiVpB&s=10"="Видеодомофон">
-    <h3>Видеодомофоны</h3>
-    <p>Домофоны для квартир, частных домов и многоквартирных объектов.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnuo03LLnvVwB6rMF-sBiFP8tSazgINh8kc3KSuSh76--LFOpYokwRVhK1&s=10" alt="СКУД">
-    <h3>СКУД</h3>
-    <p>Контроль доступа, Face ID, карты, считыватели и контроллеры.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://skud.pro/wp-content/uploads/2024/07/shl-1024x680.webp" alt="Шлагбаумы">
-    <h3>Шлагбаумы</h3>
-    <p>Монтаж и подключение автоматических систем въезда.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8yFkfTfc9BPw4wD5JFIvge9STbKGPdrA6fyQkhKyEtAtabwQvssrit5U&s=10" alt="Пожарная сигнализация">
-    <h3>Пожарная сигнализация</h3>
-    <p>Системы обнаружения пожара и оповещения.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT196y4LoXC4cQqcFkd-jUvByWHzgT1k8tjCQkUrd-EiQl1rkiSQqDQkfY&s=10" alt="Техническое обслуживание">
-    <h3>Техническое обслуживание</h3>
-    <p>Проверка, диагностика, ремонт и обслуживание оборудования.</p>
-  </article>
-
-</div>
- </div>
-</section>
-
-<section class="about" id="about">
- <div class="wrap">
-  <h2 class="section-title">О компании <span class="gold">QORVEX SYSTEMS</span></h2>
-  <p>Мы предлагаем комплексные решения в области безопасности и инженерных систем. Работаем с 2010 года. Выполняем монтаж, настройку, диагностику и техническое обслуживание оборудования.</p>
-  <div class="advantages">
-   <div class="advantage"><strong>16 лет</strong>Опыт работы</div>
-   <div class="advantage"><strong>12 месяцев</strong>Гарантия на работы</div>
-   <div class="advantage"><strong>Под ключ</strong>Монтаж и настройка</div>
-   <div class="advantage"><strong>Караганда</strong>Наш город работы</div>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Наши направления</div>
+      <h2>Наши услуги</h2>
+      <p>Комплексные решения для квартир, домов, офисов и предприятий.</p>
+    </div>
+    <div class="grid" id="servicesGrid">
+      <article class="service"><div class="symbol">◉</div><h3>Видеонаблюдение</h3><p>IP и аналоговые камеры, видеорегистраторы, удалённый просмотр.</p></article>
+      <article class="service"><div class="symbol">▣</div><h3>Видеодомофоны</h3><p>Домофоны для квартир, частных домов и многоквартирных объектов.</p></article>
+      <article class="service"><div class="symbol">⌑</div><h3>СКУД</h3><p>Контроль доступа, карты, считыватели, Face ID и контроллеры.</p></article>
+      <article class="service"><div class="symbol">⇆</div><h3>Шлагбаумы и автоматика</h3><p>Автоматические ворота, шлагбаумы и управление доступом.</p></article>
+      <article class="service"><div class="symbol">♧</div><h3>Пожарная сигнализация</h3><p>Системы обнаружения пожара и оповещения.</p></article>
+      <article class="service"><div class="symbol">⚙️</div><h3>Техническое обслуживание</h3><p>Проверка, диагностика, ремонт и обслуживание оборудования.</p></article>
+    </div>
   </div>
- </div>
 </section>
 
-<section id="works">
- <div class="wrap">
-  <h2 class="section-title">Наши <span class="gold">работы</span></h2>
-  <p class="section-description">Здесь будут размещаться фотографии выполненных объектов.</p>
-  <div class="projects" id="projectGallery">
-   <article class="project">
-    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" alt="Система безопасности">
-    <div class="project-content"><h3>Системы безопасности</h3><p>Пример оформления объекта. Добавь фотографии своих работ через редактор.</p></div>
-   </article>
+<section id="equipment">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Каталог</div>
+      <h2>Оборудование</h2>
+      <p>Фотографии и оборудование по категориям. Добавлять материалы можно через панель администратора.</p>
+    </div>
+    <div class="category-buttons" id="categoryButtons">
+      <button class="active" data-category="all">Всё</button>
+      <button data-category="cctv">Видеонаблюдение</button>
+      <button data-category="intercom">Домофоны</button>
+      <button data-category="access">СКУД</button>
+      <button data-category="barrier">Шлагбаумы</button>
+      <button data-category="fire">Пожарная сигнализация</button>
+      <button data-category="maintenance">Обслуживание</button>
+    </div>
+    <div class="grid" id="equipmentGrid">
+      <p>Загрузка оборудования...</p>
+    </div>
   </div>
- </div>
 </section>
 
-<section class="contact" id="contacts">
- <div class="wrap">
-  <h2 class="section-title">Оставить <span class="gold">заявку</span></h2>
-  <p class="section-description">Опиши задачу — мы получим сообщение в WhatsApp.</p>
-  <form id="requestForm">
-   <input id="clientName" placeholder="Ваше имя" required>
-   <input id="clientPhone" type="tel" placeholder="Ваш телефон" required>
-   <select id="clientService" required>
-    <option value="">Выберите услугу</option>
-    <option>Видеонаблюдение</option>
-    <option>Видеодомофон</option>
-    <option>СКУД</option>
-    <option>Шлагбаум</option>
-    <option>Пожарная сигнализация</option>
-    <option>Техническое обслуживание</option>
-    <option>Другое</option>
-   </select>
-   <textarea id="clientMessage" placeholder="Опишите вашу задачу"></textarea>
-   <button class="btn" type="submit">Отправить заявку в WhatsApp</button>
-  </form>
- </div>
+<section id="works" class="advantages">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Портфолио</div>
+      <h2>Наши работы</h2>
+      <p>Здесь можно размещать фотографии выполненных объектов.</p>
+    </div>
+    <div class="grid">
+      <article class="work-card">
+        <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80" alt="Видеонаблюдение">
+        <h3>Системы видеонаблюдения</h3>
+      </article>
+      <article class="work-card">
+        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" alt="Система безопасности">
+        <h3>Системы безопасности</h3>
+      </article>
+      <article class="work-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Оборудование">
+        <h3>Монтаж оборудования</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Почему выбирают нас</div>
+      <h2>Наши преимущества</h2>
+    </div>
+    <div class="grid">
+      <article class="service"><div class="symbol">✓</div><h3>Опыт с 2010 года</h3><p>Практический опыт монтажа и обслуживания систем безопасности.</p></article>
+      <article class="service"><div class="symbol">12</div><h3>Гарантия 12 месяцев</h3><p>Гарантийная поддержка выполненных работ.</p></article>
+      <article class="service"><div class="symbol">◆</div><h3>Комплексный подход</h3><p>Подбор оборудования, монтаж, настройка и обслуживание.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="request" class="advantages">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Связаться с нами</div>
+      <h2>Оставить заявку</h2>
+      <p>Заполните форму — заявка откроется в WhatsApp.</p>
+    </div>
+    <form id="requestForm">
+      <input id="clientName" placeholder="Ваше имя" required>
+      <input id="clientPhone" type="tel" placeholder="Ваш телефон" required>
+      <select id="clientService" required>
+        <option value="">Выберите услугу</option>
+        <option>Видеонаблюдение</option>
+        <option>Видеодомофоны</option>
+        <option>СКУД</option>
+        <option>Шлагбаумы и автоматика</option>
+        <option>Пожарная сигнализация</option>
+        <option>Техническое обслуживание</option>
+        <option>Другое</option>
+      </select>
+      <input id="clientAddress" placeholder="Адрес объекта">
+      <textarea id="clientDescription" placeholder="Опишите задачу"></textarea>
+      <button class="btn" type="submit">Отправить заявку в WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">QORVEX SYSTEMS</div>
+      <h2>Контакты</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>Телефон</h3><p>+7 747 403 08 70</p></div>
+      <div class="contact-card"><h3>WhatsApp</h3><p><a href="https://wa.me/77474030870" style="color:#d6ad62">Написать нам</a></p></div>
+      <div class="contact-card"><h3>Регион работы</h3><p>Караганда и область</p></div>
+    </div>
+  </div>
 </section>
 </main>
 
 <footer>
- <div class="wrap">
-  <div class="logo">QORVEX SYSTEMS</div>
-  <p>Ваша безопасность — наша работа. Ваше спокойствие — наша репутация.</p>
-  <p>Караганда, Казахстан · +7 747 403-08-70</p>
-  <p>© <span id="currentYear"></span> QORVEX SYSTEMS</p>
- </div>
+  <div class="container">
+    <div class="logo">QORVEX SYSTEMS</div>
+    <p>Ваша безопасность — наша работа. Ваше спокойствие — наша репутация.</p>
+    <p class="small">© <span id="year"></span> QORVEX SYSTEMS. Все права защищены.</p>
+    <button class="btn btn-outline" onclick="openEditor()">⚙️ Редактировать сайт</button>
+  </div>
 </footer>
 
-<button class="editor-button" onclick="openEditor()">⚙️ Редактор сайта</button>
+<div id="editorModal">
+  <div class="modal-box">
+    <button class="btn btn-outline" onclick="closeEditor()">Закрыть</button>
+    <h2>Панель администратора</h2>
+    <div id="loginPanel">
+      <p>Войдите под учётной записью Supabase.</p>
+      <label>Email администратора</label>
+      <input id="adminEmail" type="email" placeholder="Email">
+      <label>Пароль</label>
+      <input id="adminPassword" type="password" placeholder="Пароль">
+      <button class="btn" onclick="adminLogin()">Войти</button>
+      <p id="loginMessage"></p>
+    </div>
 
-<div class="editor" id="editor">
- <div class="editor-box">
-  <h2>Редактор QORVEX SYSTEMS</h2>
-  <p>Изменения сохраняются в этом браузере.</p>
-  <label>Заголовок</label>
-  <input id="editTitle">
-  <label>Слоган</label>
-  <input id="editSlogan">
-  <label>Добавить фотографию объекта</label>
-  <input type="file" id="photoInput" accept="image/*">
-  <button class="btn" onclick="saveEditor()">Сохранить изменения</button>
-  <button class="btn btn-outline" onclick="closeEditor()">Закрыть</button>
- </div>
+    <div id="adminPanel" class="hidden">
+      <p>Вы вошли в панель управления.</p>
+      <button class="btn btn-outline" onclick="adminLogout()">Выйти</button>
+      <hr>
+      <h3>Добавить фотографию оборудования</h3>
+      <label>Категория</label>
+      <select id="photoCategory">
+        <option value="cctv">Видеонаблюдение</option>
+        <option value="intercom">Видеодомофоны</option>
+        <option value="access">СКУД и контроль доступа</option>
+        <option value="barrier">Шлагбаумы и автоматика</option>
+        <option value="fire">Пожарная сигнализация</option>
+        <option value="maintenance">Техническое обслуживание</option>
+      </select>
+      <label>Название</label>
+      <input id="photoTitle" placeholder="Например: IP-камера">
+      <label>Выбрать фотографию</label>
+      <input id="photoFile" type="file" accept="image/*">
+      <button class="btn" onclick="uploadPhoto()">Загрузить фотографию</button>
+      <p id="uploadMessage"></p>
+      <h3>Загруженные фотографии</h3>
+      <div id="adminPhotoList"></div>
+    </div>
+  </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const WA_NUMBER = "77474030870";
+const SUPABASE_URL = "https://ntbmptodfcnazyqqcwtr.supabase.co";
+const SUPABASE_KEY = "sb_publishable_VqPBaF2_EvlDKXNAAfcfhQ_Co8HH8Cc";
+const BUCKET = "equipment-photos";
 
-document.getElementById("currentYear").textContent =
-  new Date().getFullYear();
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-document.getElementById("requestForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+const categories = {
+  cctv:"Видеонаблюдение",
+  intercom:"Видеодомофоны",
+  access:"СКУД и контроль доступа",
+  barrier:"Шлагбаумы и автоматика",
+  fire:"Пожарная сигнализация",
+  maintenance:"Техническое обслуживание"
+};
+
+let selectedCategory = "all";
+let photos = [];
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function openEditor() {
+  document.getElementById("editorModal").style.display = "block";
+}
+function closeEditor() {
+  document.getElementById("editorModal").style.display = "none";
+}
+
+async function adminLogin() {
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+  const message = document.getElementById("loginMessage");
+
+  message.textContent = "Выполняется вход...";
+  const {data,error} = await db.auth.signInWithPassword({email,password});
+
+  if(error) {
+    message.textContent = "Ошибка входа: " + error.message;
+    return;
+  }
+
+  document.getElementById("loginPanel").classList.add("hidden");
+  document.getElementById("adminPanel").classList.remove("hidden");
+  await loadPhotos();
+  await loadAdminPhotos();
+}
+
+async function adminLogout() {
+  await db.auth.signOut();
+  document.getElementById("adminPanel").classList.add("hidden");
+  document.getElementById("loginPanel").classList.remove("hidden");
+}
+
+async function uploadPhoto() {
+  const message = document.getElementById("uploadMessage");
+  const file = document.getElementById("photoFile").files[0];
+  const category = document.getElementById("photoCategory").value;
+  const title = document.getElementById("photoTitle").value.trim();
+
+  if(!file) {
+    message.textContent = "Сначала выберите фотографию.";
+    return;
+  }
+  if(!file.type.startsWith("image/")) {
+    message.textContent = "Можно загружать только изображения.";
+    return;
+  }
+  if(file.size > 8 * 1024 * 1024) {
+    message.textContent = "Размер фотографии не должен превышать 8 МБ.";
+    return;
+  }
+
+  message.textContent = "Загрузка...";
+  const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g,"");
+  const path = category + "/" + Date.now() + "_" + safeName;
+
+  const {error:uploadError} = await db.storage.from(BUCKET).upload(path,file);
+
+  if(uploadError) {
+    message.textContent = "Ошибка загрузки: " + uploadError.message;
+    return;
+  }
+
+  const {data:urlData} = db.storage.from(BUCKET).getPublicUrl(path);
+
+  const {error:insertError} = await db.from("equipment_photos").insert({
+    category,
+    title: title || file.name,
+    image_url: urlData.publicUrl,
+    storage_path: path,
+    is_active: true
+  });
+
+  if(insertError) {
+    await db.storage.from(BUCKET).remove([path]);
+    message.textContent = "Ошибка сохранения: " + insertError.message;
+    return;
+  }
+
+  document.getElementById("photoTitle").value = "";
+  document.getElementById("photoFile").value = "";
+  message.textContent = "Фотография успешно добавлена.";
+  await loadPhotos();
+  await loadAdminPhotos();
+}
+
+async function loadPhotos() {
+  const grid = document.getElementById("equipmentGrid");
+  grid.innerHTML = "<p>Загрузка...</p>";
+
+  const {data,error} = await db.from("equipment_photos")
+    .select("id,category,title,image_url")
+    .eq("is_active",true)
+    .order("sort_order",{ascending:true})
+    .order("created_at",{ascending:false});
+
+  if(error) {
+    grid.innerHTML = "<p>Не удалось загрузить фотографии оборудования.</p>";
+    console.error(error);
+    return;
+  }
+
+  photos = data || [];
+  renderPhotos();
+}
+
+function renderPhotos() {
+  const grid = document.getElementById("equipmentGrid");
+  const filtered = selectedCategory === "all"
+    ? photos
+    : photos.filter(p => p.category === selectedCategory);
+
+  if(!filtered.length) {
+    grid.innerHTML = "<p>В этой категории пока нет фотографий. Добавьте их через панель администратора.</p>";
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => `
+    <article class="equipment-card">
+      <img src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.title || "Оборудование")}" loading="lazy">
+      <h3>${escapeHtml(p.title || categories[p.category] || "Оборудование")}</h3>
+      <p>${escapeHtml(categories[p.category] || "")}</p>
+    </article>
+  `).join("");
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[char]));
+}
+
+document.getElementById("categoryButtons").addEventListener("click",event => {
+  const button = event.target.closest("button[data-category]");
+  if(!button) return;
+
+  selectedCategory = button.dataset.category;
+  document.querySelectorAll("#categoryButtons button").forEach(b =>
+    b.classList.toggle("active",b === button)
+  );
+  renderPhotos();
+});
+
+async function loadAdminPhotos() {
+  const list = document.getElementById("adminPhotoList");
+  const {data,error} = await db.from("equipment_photos")
+    .select("id,title,category,storage_path")
+    .order("created_at",{ascending:false});
+
+  if(error) {
+    list.textContent = "Ошибка получения списка: " + error.message;
+    return;
+  }
+
+  if(!data.length) {
+    list.innerHTML = "<p>Фотографий пока нет.</p>";
+    return;
+  }
+
+  list.innerHTML = data.map(p => `
+    <div class="photo-row">
+      <span>${escapeHtml(p.title || "Без названия")} — ${escapeHtml(categories[p.category] || p.category)}</span>
+      <button class="btn danger" onclick="deletePhoto('${p.id}')">Удалить</button>
+    </div>
+  `).join("");
+}
+
+async function deletePhoto(id) {
+  if(!confirm("Удалить эту фотографию?")) return;
+
+  const {data,error} = await db.from("equipment_photos")
+    .select("id,storage_path")
+    .eq("id",id)
+    .single();
+
+  if(error) {
+    alert("Не удалось найти фотографию: " + error.message);
+    return;
+  }
+
+  const {error:deleteRowError} = await db.from("equipment_photos")
+    .delete().eq("id",id);
+
+  if(deleteRowError) {
+    alert("Ошибка удаления записи: " + deleteRowError.message);
+    return;
+  }
+
+  if(data.storage_path) {
+    const {error:storageError} = await db.storage.from(BUCKET).remove([data.storage_path]);
+    if(storageError) console.error("Файл не удалён из Storage:",storageError);
+  }
+
+  await loadPhotos();
+  await loadAdminPhotos();
+}
+
+document.getElementById("requestForm").addEventListener("submit",event => {
+  event.preventDefault();
 
   const name = document.getElementById("clientName").value.trim();
   const phone = document.getElementById("clientPhone").value.trim();
   const service = document.getElementById("clientService").value;
-  const message = document.getElementById("clientMessage").value.trim();
+  const address = document.getElementById("clientAddress").value.trim();
+  const description = document.getElementById("clientDescription").value.trim();
 
-  const text =
-    "Заявка QORVEX SYSTEMS\n" +
+  const message =
+    "Здравствуйте! Заявка с сайта QORVEX SYSTEMS\n" +
     "Имя: " + name + "\n" +
     "Телефон: " + phone + "\n" +
     "Услуга: " + service + "\n" +
-    "Описание: " + message;
+    "Адрес: " + address + "\n" +
+    "Описание: " + description;
 
-  window.open(
-    "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text),
-    "_blank"
-  );
+  window.open("https://wa.me/77474030870?text=" + encodeURIComponent(message),"_blank");
 });
 
-function openEditor() {
-  document.getElementById("editor").style.display = "block";
-  document.getElementById("editTitle").value =
-    localStorage.getItem("qorvexTitle") || "Ваша безопасность — наша работа!";
-  document.getElementById("editSlogan").value =
-    localStorage.getItem("qorvexSlogan") || "Ваше спокойствие — наша репутация.";
-}
-
-function closeEditor() {
-  document.getElementById("editor").style.display = "none";
-}
-
-function saveEditor() {
-  const title = document.getElementById("editTitle").value;
-  const slogan = document.getElementById("editSlogan").value;
-
-  localStorage.setItem("qorvexTitle", title);
-  localStorage.setItem("qorvexSlogan", slogan);
-
-  document.getElementById("mainTitle").textContent = title;
-  document.getElementById("mainSlogan").textContent = slogan;
-
-  const photo = document.getElementById("photoInput").files[0];
-  if (photo) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const img = document.createElement("img");
-      img.src = event.target.result;
-      img.alt = "Выполненный проект QORVEX SYSTEMS";
-      img.style.width = "100%";
-      img.style.maxHeight = "250px";
-      img.style.objectFit = "cover";
-      document.getElementById("projectGallery").appendChild(img);
-    };
-    reader.readAsDataURL(photo);
+db.auth.getSession().then(({data}) => {
+  if(data.session) {
+    document.getElementById("loginPanel").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    loadAdminPhotos();
   }
+});
 
-  alert("Изменения сохранены в этом браузере.");
-  closeEditor();
-}
-
-const savedTitle = localStorage.getItem("qorvexTitle");
-const savedSlogan = localStorage.getItem("qorvexSlogan");
-
-if (savedTitle) document.getElementById("mainTitle").textContent = savedTitle;
-if (savedSlogan) document.getElementById("mainSlogan").textContent = savedSlogan;
+loadPhotos();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
+
 </body>
 </html>
