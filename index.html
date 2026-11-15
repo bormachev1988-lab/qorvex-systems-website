@@ -8,6 +8,90 @@
 <meta name="description" content="Видеонаблюдение, домофоны, СКУД, шлагбаумы, пожарная сигнализация и обслуживание в Караганде.">
 <link rel="stylesheet" href="style.css">
 <style>
+  /* Каталог оборудования */
+.equipment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+  gap: 14px;
+  padding: 0 18px 20px;
+}
+
+.equipment-card {
+  background: #071326;
+  border: 1px solid #34445e;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.equipment-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.equipment-info {
+  padding: 12px;
+}
+
+.equipment-info h4 {
+  color: white;
+  margin: 5px 0;
+}
+
+.equipment-price {
+  color: #e8b957;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.equipment-description {
+  color: #b9c5d8;
+  font-size: 13px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.admin-actions button {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #e8b957;
+  background: #10223d;
+  color: white;
+  cursor: pointer;
+}
+
+.equipment-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.equipment-form label {
+  color: #e8b957;
+}
+
+.equipment-form button {
+  margin: 0;
+}
+
+#equipmentEditor {
+  display: none;
+}
+
+@media(max-width:480px) {
+  .equipment-list {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 10px 15px;
+  }
+  .equipment-card img {
+    height: 130px;
+  }
+}
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
