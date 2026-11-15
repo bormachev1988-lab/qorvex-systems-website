@@ -8,7 +8,55 @@
 <meta name="description" content="Видеонаблюдение, домофоны, СКУД, шлагбаумы, пожарная сигнализация и обслуживание в Караганде.">
 <link rel="stylesheet" href="style.css">
 <style>
-:root {
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.service {
+  background: #101d30;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  border-color: #36a9ff;
+}
+
+.service img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.service h3 {
+  color: #ffffff;
+  padding: 0 18px;
+  margin-top: 18px;
+}
+
+.service p {
+  color: #aab8ca;
+  padding: 0 18px 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}:root {
   --bg:#061326;
   --panel:#10223d;
   --gold:#e8b957;
@@ -164,13 +212,45 @@ footer {
   <h2 class="section-title">Наши <span class="gold">услуги</span></h2>
   <p class="section-description">Профессиональный монтаж и обслуживание систем безопасности.</p>
   <div class="services">
-   <article class="service"><div class="symbol">◉</div><h3>Видеонаблюдение</h3><p>IP и аналоговые камеры, видеорегистраторы, удалённый просмотр.</p></article>
-   <article class="service"><div class="symbol">▣</div><h3>Видеодомофоны</h3><p>Домофоны для квартир, частных домов и многоквартирных объектов.</p></article>
-   <article class="service"><div class="symbol">▤</div><h3>СКУД</h3><p>Контроль доступа, Face ID, карты, считыватели и контроллеры.</p></article>
-   <article class="service"><div class="symbol">↗️</div><h3>Шлагбаумы</h3><p>Монтаж и подключение автоматических систем въезда.</p></article>
-   <article class="service"><div class="symbol">♨️</div><h3>Пожарная сигнализация</h3><p>Системы обнаружения пожара и оповещения.</p></article>
-   <article class="service"><div class="symbol">⚙️</div><h3>Техническое обслуживание</h3><p>Проверка, диагностика, ремонт и обслуживание оборудования.</p></article>
-  </div>
+  <div class="services-grid">
+
+  <article class="service">
+    <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800" alt="Видеонаблюдение">
+    <h3>Видеонаблюдение</h3>
+    <p>IP и аналоговые камеры, видеорегистраторы, удалённый просмотр.</p>
+  </article>
+
+  <article class="service">
+    <img src="https://images.unsplash.com/photo-1558008258-3256797b43f3?w=800" alt="Видеодомофон">
+    <h3>Видеодомофоны</h3>
+    <p>Домофоны для квартир, частных домов и многоквартирных объектов.</p>
+  </article>
+
+  <article class="service">
+    <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800" alt="СКУД">
+    <h3>СКУД</h3>
+    <p>Контроль доступа, Face ID, карты, считыватели и контроллеры.</p>
+  </article>
+
+  <article class="service">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800" alt="Шлагбаумы">
+    <h3>Шлагбаумы</h3>
+    <p>Монтаж и подключение автоматических систем въезда.</p>
+  </article>
+
+  <article class="service">
+    <img src="https://images.unsplash.com/photo- fire-detection?w=800" alt="Пожарная сигнализация">
+    <h3>Пожарная сигнализация</h3>
+    <p>Системы обнаружения пожара и оповещения.</p>
+  </article>
+
+  <article class="service">
+    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800" alt="Техническое обслуживание">
+    <h3>Техническое обслуживание</h3>
+    <p>Проверка, диагностика, ремонт и обслуживание оборудования.</p>
+  </article>
+
+</div>
  </div>
 </section>
 
