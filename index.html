@@ -400,20 +400,61 @@ footer {
 <button class="editor-button" onclick="openEditor()">⚙️ Редактор сайта</button>
 
 <div class="editor" id="editor">
- <div class="editor-box">
-  <h2>Редактор QORVEX SYSTEMS</h2>
-  <p>Изменения сохраняются в этом браузере.</p>
-  <label>Заголовок</label>
-  <input id="editTitle">
-  <label>Слоган</label>
-  <input id="editSlogan">
-  <label>Добавить фотографию объекта</label>
-  <input type="file" id="photoInput" accept="image/*">
-  <button class="btn" onclick="saveEditor()">Сохранить изменения</button>
-  <button class="btn btn-outline" onclick="closeEditor()">Закрыть</button>
- </div>
-</div>
+  <div class="editor-box">
+    <h2>QORVEX SYSTEMS — Управление сайтом</h2>
 
+    <div id="adminLogin">
+      <p>Вход администратора</p>
+      <label>Email</label>
+      <input id="adminEmail" type="email" placeholder="Ваш email">
+      <label>Пароль</label>
+      <input id="adminPassword" type="password" placeholder="Пароль">
+      <button class="btn" onclick="adminSignIn()">Войти</button>
+    </div>
+
+    <div id="adminPanel" style="display:none">
+      <p>Управление оборудованием и фотографиями</p>
+
+      <form class="equipment-form" id="equipmentForm">
+        <label>Раздел</label>
+        <select id="equipmentCategory" required>
+          <option value="cctv">Видеонаблюдение</option>
+          <option value="intercom">Видеодомофоны</option>
+          <option value="access">СКУД</option>
+          <option value="barrier">Шлагбаумы</option>
+          <option value="fire">Пожарная сигнализация</option>
+          <option value="maintenance">Техническое обслуживание</option>
+          <option value="works">Наши работы</option>
+        </select>
+
+        <label>Название оборудования или работы</label>
+        <input id="equipmentTitle" required placeholder="Например: IP камера Dahua">
+
+        <label>Цена в тенге</label>
+        <input id="equipmentPrice" type="number" min="0" step="1" placeholder="Например: 35000">
+
+        <label>Описание</label>
+        <textarea id="equipmentDescription" placeholder="Характеристики, описание"></textarea>
+
+        <label>Фотография</label>
+        <input id="equipmentPhoto" type="file" accept="image/*">
+
+        <p id="photoHint">Выбери фотографию с телефона или компьютера.</p>
+
+        <button class="btn" type="submit">Сохранить оборудование</button>
+        <button class="btn btn-outline" type="button" onclick="resetEquipmentForm()">Очистить форму</button>
+      </form>
+
+      <hr>
+      <h3>Добавленные позиции</h3>
+      <div id="adminEquipmentList"></div>
+
+      <button class="btn btn-outline" onclick="adminSignOut()">Выйти из аккаунта</button>
+    </div>
+
+    <button class="btn btn-outline" onclick="closeEditor()">Закрыть редактор</button>
+  </div>
+</div>
 <script>
 const WA_NUMBER = "77474030870";
 
