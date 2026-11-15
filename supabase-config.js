@@ -1,5 +1,5 @@
-const SUPABASE_URL = "ВСТАВЬ_СЮДА_PROJECT_URL";
-const SUPABASE_ANON_KEY = "ВСТАВЬ_СЮДА_PUBLISHABLE_KEY";
+const SUPABASE_URL = https://ntbmptodfcnazyqqcwtr.supabase.co/rest/v1/
+const SUPABASE_ANON_KEY = sb_publishable_VqPBaF2_EvlDKXNAAfcfhQ_Co8HH8Cc
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
