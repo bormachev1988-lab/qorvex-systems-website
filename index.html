@@ -1,579 +1,437 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071326">
-<title>QORVEX SYSTEMS — Безопасность и инженерные решения</title>
-<meta name="description" content="Видеонаблюдение, домофоны, СКУД, шлагбаумы, пожарная сигнализация и обслуживание в Караганде.">
-<link rel="stylesheet" href="style.css">
-<style>
-/* Каталог оборудования */
-.equipment-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
-  gap: 14px;
-  padding: 0 18px 20px;
-}
-
-.equipment-card {
-  background: #071326;
-  border: 1px solid #34445e;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.equipment-card img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-}
-
-.equipment-info {
-  padding: 12px;
-}
-
-.equipment-info h4 {
-  color: white;
-  margin: 5px 0;
-}
-
-.equipment-price {
-  color: #e8b957;
-  font-size: 19px;
-  font-weight: bold;
-}
-
-.equipment-description {
-  color: #b9c5d8;
-  font-size: 13px;
-}
-
-.admin-actions {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.admin-actions button {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #e8b957;
-  background: #10223d;
-  color: white;
-  cursor: pointer;
-}
-
-.equipment-form {
-  display: grid;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.equipment-form label {
-  color: #e8b957;
-}
-
-.equipment-form button {
-  margin: 0;
-}
-
-#equipmentEditor {
-  display: none;
-}
-
-@media(max-width:480px) {
-  .equipment-list {
-    grid-template-columns: 1fr 1fr;
-    padding: 0 10px 15px;
-  }
-  .equipment-card img {
-    height: 130px;
-  }
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.service {
-  background: #101d30;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.service:hover {
-  transform: translateY(-5px);
-  border-color: #36a9ff;
-}
-
-.service img {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  display: block;
-}
-
-.service h3 {
-  color: #ffffff;
-  padding: 0 18px;
-  margin-top: 18px;
-}
-
-.service p {
-  color: #aab8ca;
-  padding: 0 18px 18px;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-}:root {
-  --bg:#061326;
-  --panel:#10223d;
-  --gold:#e8b957;
-  --white:#f7f8fc;
-  --muted:#b9c5d8;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--white);
-  font:16px/1.6 Arial,sans-serif;
-}
-a {color:inherit;text-decoration:none}
-.wrap {width:min(1200px,92%);margin:auto}
-header {
-  position:sticky;top:0;z-index:10;
-  background:#061326f5;
-  border-bottom:1px solid #34445e;
-}
-.nav {
-  min-height:80px;
-  display:flex;align-items:center;
-  justify-content:space-between;gap:20px;
-  flex-wrap:wrap;
-}
-.logo {font-size:24px;font-weight:bold;letter-spacing:3px;color:var(--gold)}
-.logo span {display:block;font-size:12px;letter-spacing:7px;text-align:center}
-nav {display:flex;gap:20px;flex-wrap:wrap}
-nav a:hover {color:var(--gold)}
-.hero {
-  padding:100px 0;
-  background:
-    linear-gradient(90deg,#061326 10%,#061326dd 65%,#06132688),
-    url("https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1800&q=85") center/cover;
-}
-.hero-content {max-width:750px}
-.eyebrow {color:var(--gold);letter-spacing:3px;font-size:13px}
-h1 {font-size:clamp(38px,6vw,68px);line-height:1.08;margin:20px 0}
-h1 span,.gold {color:var(--gold)}
-.hero p {font-size:19px;color:var(--muted)}
-.btn {
-  display:inline-block;padding:14px 24px;
-  border-radius:30px;background:var(--gold);
-  color:#111827;font-weight:bold;border:0;
-  cursor:pointer;margin:8px 8px 8px 0;
-}
-.btn:hover {filter:brightness(1.12)}
-.btn-outline {background:transparent;color:white;border:1px solid var(--gold)}
-section {padding:65px 0}
-.section-title {font-size:34px;margin:0 0 10px}
-.section-description {color:var(--muted);margin-bottom:30px}
-.services,.projects {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-.service,.project {
-  background:var(--panel);
-  border:1px solid #34445e;
-  border-radius:12px;
-  overflow:hidden;
-}
-.service {padding:25px}
-.service .symbol {font-size:36px;color:var(--gold)}
-.service h3,.project h3 {color:var(--gold)}
-.service p,.project p {color:var(--muted)}
-.project img {
-  width:100%;height:190px;
-  object-fit:cover;display:block;
-}
-.project-content {padding:18px}
-.about {background:#0a192c}
-.about p {max-width:850px;color:var(--muted)}
-.advantages {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;
-}
-.advantage {
-  padding:20px;background:var(--panel);
-  border:1px solid #34445e;border-radius:10px;
-}
-.advantage strong {color:var(--gold);display:block;font-size:20px}
-.contact {background:#0b1d33}
-form {max-width:650px;display:grid;gap:13px}
-input,textarea,select {
-  width:100%;padding:14px;
-  border:1px solid #53627a;border-radius:7px;
-  background:#061326;color:white;font:inherit;
-}
-textarea {min-height:120px}
-footer {
-  padding:30px 0;text-align:center;
-  border-top:1px solid #34445e;color:var(--muted);
-}
-.editor-button {
-  position:fixed;right:16px;bottom:16px;z-index:20;
-  background:#10223d;color:var(--gold);
-  border:1px solid var(--gold);border-radius:25px;
-  padding:13px 18px;cursor:pointer;
-}
-.editor {
-  display:none;position:fixed;inset:0;z-index:30;
-  overflow:auto;background:#020814ed;padding:20px;
-}
-.editor-box {
-  max-width:700px;margin:30px auto;
-  background:#10223d;border:1px solid var(--gold);
-  border-radius:12px;padding:25px;
-}
-.editor-box label {display:block;margin-top:15px;color:var(--gold)}
-.editor-box input {margin-top:5px}
-.editor-box h2 {color:var(--gold)}
-@media(max-width:700px) {
-  .nav {padding:15px 0}
-  nav {gap:12px;font-size:13px}
-  .hero {padding:65px 0}
-  section {padding:45px 0}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#061326">
+  <meta name="description" content="Видеонаблюдение, домофоны, СКУД, шлагбаумы, пожарная сигнализация и обслуживание в Караганде.">
+  <title>QORVEX SYSTEMS — Безопасность и инженерные решения</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    :root{--bg:#061326;--panel:#10223d;--panel2:#0a192c;--gold:#e8b957;--white:#f7f8fc;--muted:#b9c5d8;--line:#34445e}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font:16px/1.6 Arial,sans-serif}
+    a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.wrap{width:min(1200px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:#061326f5;border-bottom:1px solid var(--line)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .logo{font-size:23px;font-weight:bold;letter-spacing:3px;color:var(--gold)}.logo small{display:block;font-size:11px;letter-spacing:7px;text-align:center}
+    nav{display:flex;gap:18px;flex-wrap:wrap}nav a:hover{color:var(--gold)}
+    .hero{padding:95px 0;background:linear-gradient(90deg,#061326 10%,#061326e8 65%,#06132699),url("https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1800&q=85") center/cover}
+    .hero-content{max-width:760px}.eyebrow{color:var(--gold);letter-spacing:3px;font-size:13px}h1{font-size:clamp(36px,6vw,66px);line-height:1.1;margin:18px 0}
+    h1 span,.gold{color:var(--gold)}.hero p{font-size:18px;color:var(--muted)}.btn{display:inline-block;padding:12px 21px;border-radius:28px;background:var(--gold);color:#111827;font-weight:bold;border:0;cursor:pointer;margin:7px 7px 7px 0}
+    .btn:hover{filter:brightness(1.1)}.btn-outline{background:transparent;color:white;border:1px solid var(--gold)}
+    section{padding:62px 0}.section-title{font-size:32px;margin:0 0 8px}.section-description{color:var(--muted);margin:0 0 26px}
+    .services-grid,.equipment-list,.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .service,.equipment-card,.project,.advantage{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+    .service img,.equipment-card img,.project img{width:100%;height:190px;object-fit:cover;display:block;background:#09172a}
+    .service h3,.project h3,.equipment-info h3{color:var(--gold);margin:14px 16px 5px}.service p,.project p{color:var(--muted);margin:0;padding:0 16px 17px}
+    .about{background:var(--panel2)}.about p{max-width:850px;color:var(--muted)}.advantages{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:25px}
+    .advantage{padding:18px}.advantage strong{display:block;color:var(--gold);font-size:20px}
+    .equipment-info{padding:12px}.equipment-info h3{margin:0 0 7px}.equipment-price{color:var(--gold);font-size:19px;font-weight:bold}.equipment-description{color:var(--muted);font-size:14px;white-space:pre-wrap}
+    .contact{background:#0b1d33}.contact form{max-width:650px}.form-grid{display:grid;gap:12px}
+    input,textarea,select{width:100%;padding:12px;border:1px solid #53627a;border-radius:7px;background:#061326;color:white}
+    textarea{min-height:105px;resize:vertical}label{display:block;color:var(--gold);font-size:14px;margin:5px 0}
+    footer{padding:28px 0;text-align:center;border-top:1px solid var(--line);color:var(--muted)}
+    .editor-button{position:fixed;right:15px;bottom:15px;z-index:20;background:#10223d;color:var(--gold);border:1px solid var(--gold);border-radius:25px;padding:12px 17px;cursor:pointer}
+    .editor{display:none;position:fixed;inset:0;z-index:30;overflow:auto;background:#020814f2;padding:14px}.editor-box{max-width:850px;margin:20px auto;background:#10223d;border:1px solid var(--gold);border-radius:14px;padding:20px}
+    .editor-box h2,.editor-box h3{color:var(--gold)}.editor-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}.tab{background:#061326;color:white;border:1px solid var(--line);padding:9px 12px;border-radius:8px;cursor:pointer}.tab.active{border-color:var(--gold);color:var(--gold)}
+    .tab-panel{display:none}.tab-panel.active{display:block}.editor-form{display:grid;gap:10px}.editor-list{display:grid;gap:9px;margin:12px 0}.editor-item{padding:10px;border:1px solid var(--line);border-radius:8px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.editor-item img{width:65px;height:55px;object-fit:cover;border-radius:5px}
+    .small-btn{padding:7px 10px;border-radius:6px;border:1px solid var(--gold);background:#061326;color:white;cursor:pointer}.danger{border-color:#d66;color:#ffb5b5}.muted{color:var(--muted)}.status{padding:9px 12px;border-radius:7px;background:#061326;margin:10px 0;color:var(--muted)}.hidden{display:none!important}
+    @media(max-width:650px){.nav{padding:12px 0}nav{gap:10px;font-size:13px}.hero{padding:62px 0}section{padding:43px 0}.services-grid,.equipment-list,.projects{grid-template-columns:1fr 1fr}.service img,.equipment-card img,.project img{height:140px}.section-title{font-size:28px}}
+    @media(max-width:390px){.services-grid,.equipment-list,.projects{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-
-<header>
- <div class="wrap nav">
-  <a class="logo" href="#home">QORVEX <span>SYSTEMS</span></a>
+<header><div class="wrap nav">
+  <a class="logo" href="#home">QORVEX<small>SYSTEMS</small></a>
   <nav>
-   <a href="#home">Главная</a>
-   <a href="#services">Услуги</a>
-   <a href="#works">Наши работы</a>
-   <a href="#about">О компании</a>
-   <a href="#contacts">Контакты</a>
+    <a href="#home">Главная</a><a href="#services">Услуги</a><a href="#equipment">Оборудование</a><a href="#works">Наши работы</a><a href="#about">О компании</a><a href="#contacts">Контакты</a>
   </nav>
- </div>
-</header>
+</div></header>
 
 <main>
-<section class="hero" id="home">
- <div class="wrap hero-content">
-  <div class="eyebrow">КАРАГАНДА · С 2010 ГОДА</div>
+<section class="hero" id="home"><div class="wrap hero-content">
+  <div class="eyebrow" id="heroEyebrow">КАРАГАНДА · С 2010 ГОДА</div>
   <h1 id="mainTitle">Ваша безопасность — <span>наша работа!</span></h1>
   <p id="mainSlogan">Ваше спокойствие — наша репутация.</p>
-  <p>Комплексные системы безопасности и инженерные решения для дома, бизнеса и объектов любой сложности.</p>
-  <a class="btn" href="#request">Оставить заявку →</a>
-  <a class="btn btn-outline" href="https://wa.me/77474030870">WhatsApp →</a>
- </div>
-</section>
+  <p id="heroDescription">Комплексные системы безопасности и инженерные решения для дома, бизнеса и объектов любой сложности.</p>
+  <a class="btn" id="heroRequestButton" href="#contacts">Оставить заявку →</a>
+  <a class="btn btn-outline" id="heroWhatsappButton" href="https://wa.me/77474030870" target="_blank" rel="noopener">WhatsApp →</a>
+</div></section>
 
-<section id="services">
- <div class="wrap">
+<section id="services"><div class="wrap">
   <h2 class="section-title">Наши <span class="gold">услуги</span></h2>
-  <p class="section-description">Профессиональный монтаж и обслуживание систем безопасности.</p>
-  <div class="services">
-  <div class="services-grid">
+  <p class="section-description" id="servicesIntro">Профессиональный монтаж и обслуживание систем безопасности.</p>
+  <div class="services-grid" id="servicesGrid"></div>
+</div></section>
 
-  <article class="service">
-    <img src=https://securityrussia.com/upload/iblock/230/hw62obchq1i5hk5tgafqkuzjz9s1ozb0/blog_622.jpg alt="Видеонаблюдение">
-    <h3>Видеонаблюдение</h3>
-    <p>IP и аналоговые камеры, видеорегистраторы, удалённый просмотр.</p>
-  </article>
+<section id="equipment"><div class="wrap">
+  <h2 class="section-title">Каталог <span class="gold">оборудования</span></h2>
+  <p class="section-description">Оборудование для систем безопасности. Стоимость и наличие уточняйте у специалиста.</p>
+  <div class="equipment-list" id="equipmentGrid"></div>
+  <p id="equipmentEmpty" class="muted">Каталог скоро пополнится.</p>
+</div></section>
 
-  <article class="service">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsFL3nnNvIqlI2ZClQj8TvoK9KAPfY8NDcmZnCGjxgUuxosr02JfbuiVpB&s=10" alt="Видеодомофон">
-    <h3>Видеодомофоны</h3>
-    <p>Домофоны для квартир, частных домов и многоквартирных объектов.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnuo03LLnvVwB6rMF-sBiFP8tSazgINh8kc3KSuSh76--LFOpYokwRVhK1&s=10" alt="СКУД">
-    <h3>СКУД</h3>
-    <p>Контроль доступа, Face ID, карты, считыватели и контроллеры.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://skud.pro/wp-content/uploads/2024/07/shl-1024x680.webp" alt="Шлагбаумы">
-    <h3>Шлагбаумы</h3>
-    <p>Монтаж и подключение автоматических систем въезда.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8yFkfTfc9BPw4wD5JFIvge9STbKGPdrA6fyQkhKyEtAtabwQvssrit5U&s=10" alt="Пожарная сигнализация">
-    <h3>Пожарная сигнализация</h3>
-    <p>Системы обнаружения пожара и оповещения.</p>
-  </article>
-
-  <article class="service">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT196y4LoXC4cQqcFkd-jUvByWHzgT1k8tjCQkUrd-EiQl1rkiSQqDQkfY&s=10" alt="Техническое обслуживание">
-    <h3>Техническое обслуживание</h3>
-    <p>Проверка, диагностика, ремонт и обслуживание оборудования.</p>
-  </article>
-
-</div>
- </div>
-</section>
-
-<section class="about" id="about">
- <div class="wrap">
+<section class="about" id="about"><div class="wrap">
   <h2 class="section-title">О компании <span class="gold">QORVEX SYSTEMS</span></h2>
-  <p>Мы предлагаем комплексные решения в области безопасности и инженерных систем. Работаем с 2010 года. Выполняем монтаж, настройку, диагностику и техническое обслуживание оборудования.</p>
-  <div class="advantages">
-   <div class="advantage"><strong>16 лет</strong>Опыт работы</div>
-   <div class="advantage"><strong>12 месяцев</strong>Гарантия на работы</div>
-   <div class="advantage"><strong>Под ключ</strong>Монтаж и настройка</div>
-   <div class="advantage"><strong>Караганда</strong>Наш город работы</div>
-  </div>
- </div>
-</section>
+  <p id="aboutText">Мы предлагаем комплексные решения в области безопасности и инженерных систем. Работаем с 2010 года. Выполняем монтаж, настройку, диагностику и техническое обслуживание оборудования.</p>
+  <div class="advantages" id="advantagesGrid"></div>
+</div></section>
 
-<section id="works">
- <div class="wrap">
+<section id="works"><div class="wrap">
   <h2 class="section-title">Наши <span class="gold">работы</span></h2>
-  <p class="section-description">Здесь будут размещаться фотографии выполненных объектов.</p>
-  <div class="projects" id="projectGallery">
-   <article class="project">
-    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" alt="Система безопасности">
-    <div class="project-content"><h3>Системы безопасности</h3><p>Пример оформления объекта. Добавь фотографии своих работ через редактор.</p></div>
-   </article>
-  </div>
- </div>
-</section>
+  <p class="section-description" id="worksIntro">Фотографии выполненных объектов и реализованных проектов.</p>
+  <div class="projects" id="projectGallery"></div>
+  <p id="projectsEmpty" class="muted">Фотографии объектов скоро появятся.</p>
+</div></section>
 
-<section class="contact" id="contacts">
- <div class="wrap">
+<section class="contact" id="contacts"><div class="wrap">
   <h2 class="section-title">Оставить <span class="gold">заявку</span></h2>
-  <p class="section-description">Опиши задачу — мы получим сообщение в WhatsApp.</p>
-  <form id="requestForm">
-   <input id="clientName" placeholder="Ваше имя" required>
-   <input id="clientPhone" type="tel" placeholder="Ваш телефон" required>
-   <select id="clientService" required>
-    <option value="">Выберите услугу</option>
-    <option>Видеонаблюдение</option>
-    <option>Видеодомофон</option>
-    <option>СКУД</option>
-    <option>Шлагбаум</option>
-    <option>Пожарная сигнализация</option>
-    <option>Техническое обслуживание</option>
-    <option>Другое</option>
-   </select>
-   <textarea id="clientMessage" placeholder="Опишите вашу задачу"></textarea>
-   <button class="btn" type="submit">Отправить заявку в WhatsApp</button>
+  <p class="section-description" id="contactIntro">Опишите задачу — мы свяжемся с вами.</p>
+  <form id="requestForm" class="form-grid">
+    <input id="clientName" placeholder="Ваше имя" required>
+    <input id="clientPhone" type="tel" placeholder="Ваш телефон" required>
+    <select id="clientService" required><option value="">Выберите услугу</option></select>
+    <textarea id="clientMessage" placeholder="Опишите вашу задачу"></textarea>
+    <button class="btn" type="submit">Отправить заявку в WhatsApp</button>
   </form>
- </div>
-</section>
+  <p id="contactPhoneLine" class="muted"></p><p id="contactAddressLine" class="muted"></p><p id="contactEmailLine" class="muted"></p>
+</div></section>
 </main>
 
-<footer>
- <div class="wrap">
+<footer><div class="wrap">
   <div class="logo">QORVEX SYSTEMS</div>
-  <p>Ваша безопасность — наша работа. Ваше спокойствие — наша репутация.</p>
-  <p>Караганда, Казахстан · +7 747 403-08-70</p>
+  <p id="footerSlogan">Ваша безопасность — наша работа. Ваше спокойствие — наша репутация.</p>
+  <p id="footerContacts">Караганда, Казахстан · +7 747 403-08-70</p>
   <p>© <span id="currentYear"></span> QORVEX SYSTEMS</p>
- </div>
-</footer>
+</div></footer>
 
-<button class="editor-button" onclick="openEditor()">⚙️ Редактор сайта</button>
-
-<div class="editor" id="editor">
-  <div class="editor-box">
-    <h2>QORVEX SYSTEMS — Управление сайтом</h2>
-
-    <div id="adminLogin">
-  <h3>Вход администратора</h3>
-
-  <label>Email</label>
-  <input id="adminEmail" type="email"
-         placeholder="Ваш email">
-
-  <label>Пароль</label>
-  <input id="adminPassword" type="password"
-         placeholder="Пароль">
-
-<button type="button" onclick="adminSignIn()">
-  Войти
-</button>
-</div>
-    <div id="adminPanel" style="display:none">
-      <p>Управление оборудованием и фотографиями</p>
-
-      <form class="equipment-form" id="equipmentForm">
-        <label>Раздел</label>
-        <select id="equipmentCategory" required>
-          <option value="cctv">Видеонаблюдение</option>
-          <option value="intercom">Видеодомофоны</option>
-          <option value="access">СКУД</option>
-          <option value="barrier">Шлагбаумы</option>
-          <option value="fire">Пожарная сигнализация</option>
-          <option value="maintenance">Техническое обслуживание</option>
-          <option value="works">Наши работы</option>
-        </select>
-
-        <label>Название оборудования или работы</label>
-        <input id="equipmentTitle" required placeholder="Например: IP камера Dahua">
-
-        <label>Цена в тенге</label>
-        <input id="equipmentPrice" type="number" min="0" step="1" placeholder="Например: 35000">
-
-        <label>Описание</label>
-        <textarea id="equipmentDescription" placeholder="Характеристики, описание"></textarea>
-
-        <label>Фотография</label>
-        <input id="equipmentPhoto" type="file" accept="image/*">
-
-        <p id="photoHint">Выбери фотографию с телефона или компьютера.</p>
-
-        <button class="btn" type="submit">Сохранить оборудование</button>
-        <button class="btn btn-outline" type="button" onclick="resetEquipmentForm()">Очистить форму</button>
-      </form>
-
-      <hr>
-      <h3>Добавленные позиции</h3>
-      <div id="adminEquipmentList"></div>
-
-      <button class="btn btn-outline" onclick="adminSignOut()">Выйти из аккаунта</button>
+<button class="editor-button" id="openEditorButton" type="button">⚙️ Редактор сайта</button>
+<div class="editor" id="editor" aria-hidden="true"><div class="editor-box">
+  <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+    <h2>QORVEX SYSTEMS — редактор сайта</h2><button class="small-btn" id="closeEditorButton" type="button">Закрыть ✕</button>
+  </div>
+  <div id="adminLogin">
+    <p class="muted">Вход доступен только администратору.</p>
+    <form id="loginForm" class="editor-form">
+      <label>Email администратора</label><input id="adminEmail" type="email" autocomplete="username" required>
+      <label>Пароль</label><input id="adminPassword" type="password" autocomplete="current-password" required>
+      <button class="btn" type="submit">Войти</button>
+    </form>
+  </div>
+  <div id="adminPanel" class="hidden">
+    <div class="status" id="editorStatus">Подключение к облачной базе данных…</div>
+    <div class="editor-tabs">
+      <button class="tab active" data-tab="siteTab">Главная и контакты</button>
+      <button class="tab" data-tab="servicesTab">Услуги</button>
+      <button class="tab" data-tab="equipmentTab">Оборудование</button>
+      <button class="tab" data-tab="projectsTab">Наши работы</button>
+      <button class="tab" data-tab="aboutTab">О компании</button>
     </div>
 
-    <button class="btn btn-outline" onclick="closeEditor()">Закрыть редактор</button>
+    <div class="tab-panel active" id="siteTab">
+      <form id="siteForm" class="editor-form">
+        <label>Надпись над заголовком</label><input name="eyebrow">
+        <label>Главный заголовок</label><input name="title" required>
+        <label>Главный слоган</label><input name="slogan">
+        <label>Описание на главной странице</label><textarea name="heroDescription"></textarea>
+        <label>Текст кнопки заявки</label><input name="requestButton">
+        <label>Вступление к разделу услуг</label><input name="servicesIntro">
+        <label>Вступление к разделу работ</label><input name="worksIntro">
+        <label>Текст перед формой заявки</label><input name="contactIntro">
+        <label>Телефон для связи (например, +77474030870)</label><input name="phone">
+        <label>WhatsApp номер, только цифры с кодом страны</label><input name="whatsapp">
+        <label>Адрес</label><input name="address">
+        <label>Email</label><input name="email" type="email">
+        <button class="btn" type="submit">Сохранить главную и контакты</button>
+      </form>
+    </div>
+
+    <div class="tab-panel" id="servicesTab">
+      <form id="serviceForm" class="editor-form">
+        <input type="hidden" name="id">
+        <label>Название услуги</label><input name="title" required>
+        <label>Описание</label><textarea name="description"></textarea>
+        <label>Фото услуги</label><input name="photo" type="file" accept="image/*">
+        <button class="btn" type="submit">Сохранить услугу</button><button class="small-btn" type="button" data-reset="serviceForm">Очистить форму</button>
+      </form><div class="editor-list" id="serviceAdminList"></div>
+    </div>
+
+    <div class="tab-panel" id="equipmentTab">
+      <form id="equipmentForm" class="editor-form">
+        <input type="hidden" name="id">
+        <label>Раздел</label><select name="category"><option>Видеонаблюдение</option><option>Видеодомофоны</option><option>СКУД</option><option>Шлагбаумы</option><option>Пожарная сигнализация</option><option>Техническое обслуживание</option><option>Другое</option></select>
+        <label>Название оборудования</label><input name="title" required>
+        <label>Цена в тенге (можно оставить пустой)</label><input name="price" type="number" min="0" step="1">
+        <label>Описание и характеристики</label><textarea name="description"></textarea>
+        <label>Фотография</label><input name="photo" type="file" accept="image/*">
+        <button class="btn" type="submit">Сохранить оборудование</button><button class="small-btn" type="button" data-reset="equipmentForm">Очистить форму</button>
+      </form><div class="editor-list" id="equipmentAdminList"></div>
+    </div>
+
+    <div class="tab-panel" id="projectsTab">
+      <form id="projectForm" class="editor-form">
+        <input type="hidden" name="id">
+        <label>Название объекта / работы</label><input name="title" required>
+        <label>Описание работы</label><textarea name="description"></textarea>
+        <label>Фотография объекта</label><input name="photo" type="file" accept="image/*">
+        <button class="btn" type="submit">Сохранить работу</button><button class="small-btn" type="button" data-reset="projectForm">Очистить форму</button>
+      </form><div class="editor-list" id="projectAdminList"></div>
+    </div>
+
+    <div class="tab-panel" id="aboutTab">
+      <form id="aboutForm" class="editor-form">
+        <label>Текст о компании</label><textarea name="aboutText"></textarea>
+        <label>Показатель 1 — значение</label><input name="v1">
+        <label>Показатель 1 — подпись</label><input name="l1">
+        <label>Показатель 2 — значение</label><input name="v2">
+        <label>Показатель 2 — подпись</label><input name="l2">
+        <label>Показатель 3 — значение</label><input name="v3">
+        <label>Показатель 3 — подпись</label><input name="l3">
+        <label>Показатель 4 — значение</label><input name="v4">
+        <label>Показатель 4 — подпись</label><input name="l4">
+        <button class="btn" type="submit">Сохранить раздел «О компании»</button>
+      </form>
+    </div>
+    <button class="btn btn-outline" id="signOutButton" type="button">Выйти из аккаунта</button>
   </div>
-</div>
-<script>
-const WA_NUMBER = "77474030870";
+</div></div>
 
-document.getElementById("currentYear").textContent =
-  new Date().getFullYear();
-
-document.getElementById("requestForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById("clientName").value.trim();
-  const phone = document.getElementById("clientPhone").value.trim();
-  const service = document.getElementById("clientService").value;
-  const message = document.getElementById("clientMessage").value.trim();
-
-  const text =
-    "Заявка QORVEX SYSTEMS\n" +
-    "Имя: " + name + "\n" +
-    "Телефон: " + phone + "\n" +
-    "Услуга: " + service + "\n" +
-    "Описание: " + message;
-
-  window.open(
-    "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text),
-    "_blank"
-  );
-});
-
-function openEditor() {
-  document.getElementById("editor").style.display = "block";
-}
-
-function closeEditor() {
-  document.getElementById("editor").style.display = "none";
-}
-
-function closeEditor() {
-  document.getElementById("editor").style.display = "none";
-}
-
-function saveEditor() {
-  const title = document.getElementById("editTitle").value;
-  const slogan = document.getElementById("editSlogan").value;
-
-  localStorage.setItem("qorvexTitle", title);
-  localStorage.setItem("qorvexSlogan", slogan);
-
-  document.getElementById("mainTitle").textContent = title;
-  document.getElementById("mainSlogan").textContent = slogan;
-
-  const photo = document.getElementById("photoInput").files[0];
-  if (photo) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const img = document.createElement("img");
-      img.src = event.target.result;
-      img.alt = "Выполненный проект QORVEX SYSTEMS";
-      img.style.width = "100%";
-      img.style.maxHeight = "250px";
-      img.style.objectFit = "cover";
-      document.getElementById("projectGallery").appendChild(img);
-    };
-    reader.readAsDataURL(photo);
-  }
-
-  alert("Изменения сохранены в этом браузере.");
-  closeEditor();
-}
-
-const savedTitle = localStorage.getItem("qorvexTitle");
-const savedSlogan = localStorage.getItem("qorvexSlogan");
-
-if (savedTitle) document.getElementById("mainTitle").textContent = savedTitle;
-if (savedSlogan) document.getElementById("mainSlogan").textContent = savedSlogan;
-async function adminSignIn() {
-  const email = document.getElementById("adminEmail").value.trim();
-  const password = document.getElementById("adminPassword").value;
-
-  if (!email || !password) {
-    alert("Введите Email и пароль");
-    return;
-  }
-
-  try {
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
-
-    if (error) {
-      alert("Ошибка входа: " + error.message);
-      return;
-    }
-
-    document.getElementById("adminLogin").style.display = "none";
-    document.getElementById("adminPanel").style.display = "block";
-
-    alert("Добро пожаловать в панель QORVEX SYSTEMS!");
-
-  } catch (error) {
-    alert("Ошибка подключения: " + error.message);
-  }
-}
-
-async function adminSignOut() {
-  await supabaseClient.auth.signOut();
-
-  document.getElementById("adminLogin").style.display = "block";
-  document.getElementById("adminPanel").style.display = "none";
-
-  document.getElementById("adminPassword").value = "";
-}
-</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
+<script>
+"use strict";
+
+const DEFAULT_DATA = {
+  site: {
+    eyebrow:"КАРАГАНДА · С 2010 ГОДА",
+    title:"Ваша безопасность — наша работа!",
+    slogan:"Ваше спокойствие — наша репутация.",
+    heroDescription:"Комплексные системы безопасности и инженерные решения для дома, бизнеса и объектов любой сложности.",
+    requestButton:"Оставить заявку →",
+    servicesIntro:"Профессиональный монтаж и обслуживание систем безопасности.",
+    worksIntro:"Фотографии выполненных объектов и реализованных проектов.",
+    contactIntro:"Опишите задачу — мы свяжемся с вами.",
+    phone:"+7 747 403-08-70", whatsapp:"77474030870", address:"Караганда, Казахстан", email:""
+  },
+  aboutText:"Мы предлагаем комплексные решения в области безопасности и инженерных систем. Работаем с 2010 года. Выполняем монтаж, настройку, диагностику и техническое обслуживание оборудования.",
+  advantages:[
+    {value:"16 лет",label:"Опыт работы"},
+    {value:"12 месяцев",label:"Гарантия на работы"},
+    {value:"Под ключ",label:"Монтаж и настройка"},
+    {value:"Караганда",label:"Наш город работы"}
+  ],
+  services:[
+    {id:"s1",title:"Видеонаблюдение",description:"IP и аналоговые камеры, видеорегистраторы, удалённый просмотр.",image:""},
+    {id:"s2",title:"Видеодомофоны",description:"Домофоны для квартир, частных домов и многоквартирных объектов.",image:""},
+    {id:"s3",title:"СКУД",description:"Контроль доступа, Face ID, карты, считыватели и контроллеры.",image:""},
+    {id:"s4",title:"Шлагбаумы",description:"Монтаж и подключение автоматических систем въезда.",image:""},
+    {id:"s5",title:"Пожарная сигнализация",description:"Системы обнаружения пожара и оповещения.",image:""},
+    {id:"s6",title:"Техническое обслуживание",description:"Проверка, диагностика, ремонт и обслуживание оборудования.",image:""}
+  ],
+  equipment:[], projects:[]
+};
+
+let siteData = structuredClone(DEFAULT_DATA);
+let isSaving = false;
+
+const $ = (id) => document.getElementById(id);
+const setStatus = (message, isError=false) => {
+  const el = $("editorStatus");
+  if (el) { el.textContent = message; el.style.color = isError ? "#ffb5b5" : "#b9c5d8"; }
+};
+const escapeHtml = (value="") => String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+const makeId = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+
+function renderSite() {
+  const s = siteData.site || DEFAULT_DATA.site;
+  $("heroEyebrow").textContent = s.eyebrow || "";
+  $("mainTitle").textContent = s.title || "";
+  $("mainSlogan").textContent = s.slogan || "";
+  $("heroDescription").textContent = s.heroDescription || "";
+  $("heroRequestButton").textContent = s.requestButton || "Оставить заявку";
+  $("servicesIntro").textContent = s.servicesIntro || "";
+  $("worksIntro").textContent = s.worksIntro || "";
+  $("contactIntro").textContent = s.contactIntro || "";
+  const wa = String(s.whatsapp || "77474030870").replace(/\D/g,"");
+  $("heroWhatsappButton").href = "https://wa.me/" + wa;
+  $("contactPhoneLine").textContent = s.phone ? "Телефон: " + s.phone : "";
+  $("contactAddressLine").textContent = s.address ? "Адрес: " + s.address : "";
+  $("contactEmailLine").textContent = s.email ? "Email: " + s.email : "";
+  $("footerSlogan").textContent = (s.title || "") + " " + (s.slogan || "");
+  $("footerContacts").textContent = [s.address,s.phone].filter(Boolean).join(" · ");
+  $("aboutText").textContent = siteData.aboutText || "";
+  $("servicesGrid").innerHTML = (siteData.services || []).map(item => `
+    <article class="service">
+      ${item.image ? `<img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy">` : ""}
+      <h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p>
+    </article>`).join("");
+  $("equipmentGrid").innerHTML = (siteData.equipment || []).map(item => `
+    <article class="equipment-card">
+      ${item.image ? `<img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy">` : ""}
+      <div class="equipment-info"><h3>${escapeHtml(item.title)}</h3>
+      <div class="equipment-price">${item.price !== "" && item.price != null ? Number(item.price).toLocaleString("ru-RU")+" ₸" : "Цена по запросу"}</div>
+      <p class="equipment-description">${escapeHtml(item.category || "")}${item.description ? " · "+escapeHtml(item.description) : ""}</p></div>
+    </article>`).join("");
+  $("equipmentEmpty").classList.toggle("hidden", (siteData.equipment || []).length > 0);
+  $("projectGallery").innerHTML = (siteData.projects || []).map(item => `
+    <article class="project">${item.image ? `<img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy">` : ""}
+      <div class="project-content"><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p></div></article>`).join("");
+  $("projectsEmpty").classList.toggle("hidden", (siteData.projects || []).length > 0);
+  $("advantagesGrid").innerHTML = (siteData.advantages || []).map(a => `<div class="advantage"><strong>${escapeHtml(a.value)}</strong>${escapeHtml(a.label)}</div>`).join("");
+  $("clientService").innerHTML = '<option value="">Выберите услугу</option>' +
+    (siteData.services || []).map(x => `<option>${escapeHtml(x.title)}</option>`).join("") +
+    '<option>Другое</option>';
+}
+
+async function loadSiteData() {
+  if (!window.qorvexSupabase) { renderSite(); console.error("Supabase не настроен: проверьте supabase-config.js"); return; }
+  try {
+    const {data,error} = await window.qorvexSupabase.from("qorvex_site").select("content").eq("id",1).maybeSingle();
+    if (error) throw error;
+    if (data && data.content) siteData = {...structuredClone(DEFAULT_DATA), ...data.content,
+      site:{...DEFAULT_DATA.site,...(data.content.site || {})}};
+    renderSite();
+  } catch (e) {
+    console.error(e); renderSite();
+    $("equipmentEmpty").textContent = "Не удалось загрузить каталог. Проверьте подключение к базе данных.";
+  }
+}
+
+async function saveSiteData() {
+  if (isSaving) return;
+  isSaving = true; setStatus("Сохраняем изменения в облаке…");
+  try {
+    const {data:sessionData} = await window.qorvexSupabase.auth.getSession();
+    if (!sessionData.session) throw new Error("Сначала войдите в аккаунт администратора.");
+    const {error} = await window.qorvexSupabase.from("qorvex_site").upsert({id:1,content:siteData,updated_at:new Date().toISOString()});
+    if (error) throw error;
+    renderSite(); setStatus("Изменения опубликованы. Они видны всем посетителям сайта.");
+    return true;
+  } catch(e) { console.error(e); setStatus("Ошибка сохранения: "+e.message,true); alert("Не удалось сохранить: "+e.message); return false; }
+  finally { isSaving=false; }
+}
+
+async function uploadPhoto(file, oldUrl="") {
+  if (!file) return oldUrl;
+  if (!file.type.startsWith("image/")) throw new Error("Можно загружать только изображения.");
+  if (file.size > 8*1024*1024) throw new Error("Размер фотографии должен быть не больше 8 МБ.");
+  const ext = (file.name.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g,"") || "jpg";
+  const path = "site/" + makeId() + "." + ext;
+  const {error} = await window.qorvexSupabase.storage.from("qorvex-public").upload(path,file,{cacheControl:"3600",upsert:false,contentType:file.type});
+  if (error) throw error;
+  const {data} = window.qorvexSupabase.storage.from("qorvex-public").getPublicUrl(path);
+  return data.publicUrl;
+}
+
+function setFormValues(form, values) {
+  Object.entries(values).forEach(([key,value]) => { const el=form.elements.namedItem(key); if(el && el.type !== "file") el.value=value ?? ""; });
+}
+function formValues(form) { return Object.fromEntries(new FormData(form).entries()); }
+function renderAdminLists() {
+  const listConfigs = [
+    ["serviceAdminList",siteData.services,"serviceForm","service"],
+    ["equipmentAdminList",siteData.equipment,"equipmentForm","equipment"],
+    ["projectAdminList",siteData.projects,"projectForm","project"]
+  ];
+  listConfigs.forEach(([target,items,formId,type]) => {
+    $(target).innerHTML = items.map(item => `<div class="editor-item">
+      <div style="display:flex;align-items:center;gap:9px">${item.image ? `<img src="${escapeHtml(item.image)}" alt="">` : ""}
+      <div><strong>${escapeHtml(item.title)}</strong><div class="muted">${escapeHtml(item.category || item.description || "")}</div></div></div>
+      <div><button class="small-btn" data-edit="${type}" data-id="${escapeHtml(item.id)}">Изменить</button>
+      <button class="small-btn danger" data-delete="${type}" data-id="${escapeHtml(item.id)}">Удалить</button></div></div>`).join("");
+  });
+}
+function resetForm(id) { $(id).reset(); $(id).elements.namedItem("id").value=""; }
+
+async function handleItemSubmit(event,type) {
+  event.preventDefault();
+  const form=event.currentTarget, v=formValues(form), id=v.id || makeId();
+  const collection = type==="service" ? "services" : type==="equipment" ? "equipment" : "projects";
+  try {
+    setStatus("Обрабатываем данные и фотографию…");
+    const old = siteData[collection].find(x=>x.id===id);
+    const file=form.elements.namedItem("photo").files[0];
+    const image = await uploadPhoto(file,old?.image || "");
+    const item = type==="service"
+      ? {id,title:v.title.trim(),description:v.description.trim(),image}
+      : type==="equipment"
+        ? {id,category:v.category,title:v.title.trim(),price:v.price,description:v.description.trim(),image}
+        : {id,title:v.title.trim(),description:v.description.trim(),image};
+    const idx=siteData[collection].findIndex(x=>x.id===id);
+    if(idx>=0) siteData[collection][idx]=item; else siteData[collection].push(item);
+    const saved = await saveSiteData();
+    if (saved) { resetForm(form.id); renderAdminLists(); }
+  } catch(e) { console.error(e); setStatus("Ошибка: "+e.message,true); alert(e.message); }
+}
+async function deleteItem(type,id) {
+  if(!confirm("Удалить эту запись?")) return;
+  const collection=type==="service"?"services":type==="equipment"?"equipment":"projects";
+  siteData[collection]=siteData[collection].filter(x=>x.id!==id);
+  await saveSiteData(); renderAdminLists();
+}
+function editItem(type,id) {
+  const collection=type==="service"?"services":type==="equipment"?"equipment":"projects";
+  const item=siteData[collection].find(x=>x.id===id); if(!item) return;
+  const form=$(type==="service"?"serviceForm":type==="equipment"?"equipmentForm":"projectForm");
+  setFormValues(form,item); form.elements.namedItem("id").value=item.id;
+  form.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+$("requestForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const s=siteData.site || DEFAULT_DATA.site;
+  const name=$("clientName").value.trim(), phone=$("clientPhone").value.trim(), service=$("clientService").value, message=$("clientMessage").value.trim();
+  const body=`Заявка QORVEX SYSTEMS\nИмя: ${name}\nТелефон: ${phone}\nУслуга: ${service}\nОписание: ${message}`;
+  const number=String(s.whatsapp || "77474030870").replace(/\D/g,"");
+  window.open("https://wa.me/"+number+"?text="+encodeURIComponent(body),"_blank","noopener");
+});
+$("currentYear").textContent=new Date().getFullYear();
+$("openEditorButton").addEventListener("click",()=>{$("editor").style.display="block";$("editor").setAttribute("aria-hidden","false");});
+$("closeEditorButton").addEventListener("click",()=>{$("editor").style.display="none";$("editor").setAttribute("aria-hidden","true");});
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!window.qorvexSupabase){alert("Supabase не подключён. Проверьте supabase-config.js.");return;}
+  const email=$("adminEmail").value.trim(),password=$("adminPassword").value;
+  const {data,error}=await window.qorvexSupabase.auth.signInWithPassword({email,password});
+  if(error){alert("Ошибка входа: "+error.message);return;}
+  $("adminLogin").classList.add("hidden");$("adminPanel").classList.remove("hidden");
+  await loadSiteData();renderAdminLists();fillEditorForms();setStatus("Вы вошли. Изменения сохраняются в облаке.");
+});
+$("signOutButton").addEventListener("click",async()=>{
+  await window.qorvexSupabase.auth.signOut();
+  $("adminPanel").classList.add("hidden");$("adminLogin").classList.remove("hidden");$("adminPassword").value="";
+});
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===btn));
+  document.querySelectorAll(".tab-panel").forEach(x=>x.classList.toggle("active",x.id===btn.dataset.tab));
+}));
+$("siteForm").addEventListener("submit",async e=>{
+  e.preventDefault();const v=formValues(e.currentTarget);
+  siteData.site={...siteData.site,eyebrow:v.eyebrow,title:v.title.trim(),slogan:v.slogan,heroDescription:v.heroDescription,requestButton:v.requestButton,servicesIntro:v.servicesIntro,worksIntro:v.worksIntro,contactIntro:v.contactIntro,phone:v.phone,whatsapp:v.whatsapp.replace(/\D/g,""),address:v.address,email:v.email};
+  await saveSiteData();
+});
+$("aboutForm").addEventListener("submit",async e=>{
+  e.preventDefault();const v=formValues(e.currentTarget);
+  siteData.aboutText=v.aboutText;
+  siteData.advantages=[1,2,3,4].map(i=>({value:v["v"+i],label:v["l"+i]}));
+  await saveSiteData();
+});
+$("serviceForm").addEventListener("submit",e=>handleItemSubmit(e,"service"));
+$("equipmentForm").addEventListener("submit",e=>handleItemSubmit(e,"equipment"));
+$("projectForm").addEventListener("submit",e=>handleItemSubmit(e,"project"));
+document.querySelectorAll("[data-reset]").forEach(btn=>btn.addEventListener("click",()=>resetForm(btn.dataset.reset)));
+document.addEventListener("click",e=>{
+  const edit=e.target.closest("[data-edit]"), del=e.target.closest("[data-delete]");
+  if(edit) editItem(edit.dataset.edit,edit.dataset.id);
+  if(del) deleteItem(del.dataset.delete,del.dataset.id);
+});
+function fillEditorForms(){
+  const s=siteData.site || DEFAULT_DATA.site;setFormValues($("siteForm"),s);
+  const a=siteData.advantages || [];
+  const av={aboutText:siteData.aboutText};a.forEach((x,i)=>{av["v"+(i+1)]=x.value;av["l"+(i+1)]=x.label;});
+  setFormValues($("aboutForm"),av);renderAdminLists();
+}
+window.addEventListener("DOMContentLoaded",loadSiteData);
+</script>
 </body>
 </html>
