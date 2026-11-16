@@ -490,10 +490,10 @@ document.getElementById("requestForm").addEventListener("submit", function(e) {
 
 function openEditor() {
   document.getElementById("editor").style.display = "block";
-  document.getElementById("editTitle").value =
-    localStorage.getItem("qorvexTitle") || "Ваша безопасность — наша работа!";
-  document.getElementById("editSlogan").value =
-    localStorage.getItem("qorvexSlogan") || "Ваше спокойствие — наша репутация.";
+}
+
+function closeEditor() {
+  document.getElementById("editor").style.display = "none";
 }
 
 function closeEditor() {
