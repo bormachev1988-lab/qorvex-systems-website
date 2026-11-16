@@ -534,6 +534,44 @@ const savedSlogan = localStorage.getItem("qorvexSlogan");
 
 if (savedTitle) document.getElementById("mainTitle").textContent = savedTitle;
 if (savedSlogan) document.getElementById("mainSlogan").textContent = savedSlogan;
+async function adminSignIn() {
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+
+  if (!email || !password) {
+    alert("Введите Email и пароль");
+    return;
+  }
+
+  try {
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      alert("Ошибка входа: " + error.message);
+      return;
+    }
+
+    document.getElementById("adminLogin").style.display = "none";
+    document.getElementById("adminPanel").style.display = "block";
+
+    alert("Добро пожаловать в панель QORVEX SYSTEMS!");
+
+  } catch (error) {
+    alert("Ошибка подключения: " + error.message);
+  }
+}
+
+async function adminSignOut() {
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("adminLogin").style.display = "block";
+  document.getElementById("adminPanel").style.display = "none";
+
+  document.getElementById("adminPassword").value = "";
+}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
