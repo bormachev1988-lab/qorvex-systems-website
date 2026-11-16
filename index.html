@@ -313,13 +313,32 @@ async function saveSiteData() {
 
 async function uploadPhoto(file, oldUrl="") {
   if (!file) return oldUrl;
-  if (!file.type.startsWith("image/")) throw new Error("Можно загружать только изображения.");
-  if (file.size > 8*1024*1024) throw new Error("Размер фотографии должен быть не больше 8 МБ.");
-  const ext = (file.name.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g,"") || "jpg";
+  if (!file.type.startsWith("image/")) {
+    throw new Error("Можно загружать только изображения.");
+  }
+  if (file.size > 8*1024*1024) {
+    throw new Error("Размер фотографии должен быть не больше 8 МБ.");
+  }
+
+  const ext = (file.name.split(".").pop() || "jpg")
+    .toLowerCase().replace(/[^a-z0-9]/g,"") || "jpg";
+
   const path = "site/" + makeId() + "." + ext;
-  const {error} = await window.qorvexSupabase.storage.from("qorvex-public").upload(path,file,{cacheControl:"3600",upsert:false,contentType:file.type});
+
+  const {error} = await window.qorvexSupabase.storage
+    .from("qorvex-media")
+    .upload(path, file, {
+      cacheControl:"3600",
+      upsert:false,
+      contentType:file.type
+    });
+
   if (error) throw error;
-  const {data} = window.qorvexSupabase.storage.from("qorvex-public").getPublicUrl(path);
+
+  const {data} = window.qorvexSupabase.storage
+    .from("qorvex-media")
+    .getPublicUrl(path);
+
   return data.publicUrl;
 }
 
