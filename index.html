@@ -643,7 +643,23 @@ async function handleItemSubmit(event,type) {
     setStatus("Обрабатываем данные и фотографию…");
     const old = siteData[collection].find(x=>x.id===id);
     const file=form.elements.namedItem("photo").files[0];
-    const image = await uploadPhoto(file,old?.image || "");
+    const categoryFolder = type === "project"
+  ? "works"
+  : type === "equipment"
+    ? "equipment"
+    : "site";
+
+const categoryName = type === "service"
+  ? "services"
+  : (v.category || "other")
+      .toLowerCase()
+      .replace(/[^a-zа-яё0-9]+/gi, "-");
+
+const image = await uploadPhoto(
+  file,
+  old?.image || "",
+  categoryFolder + "/" + categoryName
+);
     const item = type==="service"
       ? {id,title:v.title.trim(),description:v.description.trim(),image}
       : type==="equipment"
