@@ -664,7 +664,13 @@ const image = await uploadPhoto(
       ? {id,title:v.title.trim(),description:v.description.trim(),image}
       : type==="equipment"
         ? {id,category:v.category,title:v.title.trim(),price:v.price,description:v.description.trim(),image}
-        : {id,title:v.title.trim(),description:v.description.trim(),image};
+      : {
+    id,
+    category: v.category || "Общие работы",
+    title: v.title.trim(),
+    description: v.description.trim(),
+    image
+  };
     const idx=siteData[collection].findIndex(x=>x.id===id);
     if(idx>=0) siteData[collection][idx]=item; else siteData[collection].push(item);
     const saved = await saveSiteData();
