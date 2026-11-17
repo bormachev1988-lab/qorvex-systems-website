@@ -699,6 +699,24 @@ function fillEditorForms(){
   const av={aboutText:siteData.aboutText};a.forEach((x,i)=>{av["v"+(i+1)]=x.value;av["l"+(i+1)]=x.label;});
   setFormValues($("aboutForm"),av);renderAdminLists();
 }
+  document.addEventListener("click", event => {
+  const folder = event.target.closest("[data-gallery-kind]");
+
+  if (folder) {
+    openGallery(
+      folder.dataset.galleryKind,
+      folder.dataset.galleryCategory
+    );
+  }
+});
+
+$("galleryClose").addEventListener("click", closeGallery);
+
+$("galleryModal").addEventListener("click", event => {
+  if (event.target.id === "galleryModal") {
+    closeGallery();
+  }
+});
 window.addEventListener("DOMContentLoaded",loadSiteData);
 </script>
 </body>
