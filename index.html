@@ -373,7 +373,101 @@ const setStatus = (message, isError=false) => {
 const escapeHtml = (value="") => String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 const makeId = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
 
-function renderSite() {
+function renderSite()function groupByCategory(items) {
+  return items.reduce((groups, item) => {
+    const category = item.category || "Общие работы";
+
+    if (!groups[category]) groups[category] = [];
+
+    groups[category].push(item);
+
+    return groups;
+  }, {});
+}
+
+function renderFolders(groups, type) {
+  const icons = {
+    "Видеонаблюдение": "📹",
+    "Домофония": "📞",
+    "Видеодомофоны": "📞",
+    "СКУД": "🔐",
+    "Шлагбаумы": "🚧",
+    "Пожарная сигнализация": "🚨",
+    "Техническое обслуживание": "🛠️",
+    "Другое": "📁",
+    "Общие работы": "📂"
+  };
+
+  return Object.entries(groups).map(([category, items]) => {
+    const cover = items.find(x => x.image)?.image;
+
+    return `
+      <article class="folder-card"
+        data-gallery-kind="${type}"
+        data-gallery-category="${escapeHtml(category)}">
+
+        <div class="folder-cover"
+          ${cover ? style="background:linear-gradient(#06132655,#06132699),url('${escapeHtml(cover)}') center/cover" : ""}>
+          ${cover ? "" : (icons[category] || "📁")}
+        </div>
+
+        <div class="folder-info">
+          <h3>${escapeHtml(category)}</h3>
+          <p>📷 Фотографий: ${items.length}</p>
+          <p class="gold">Открыть папку →</p>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+// ОТКРЫТИЕ ПАПКИ
+function openGallery(type, category) {
+  const collection = type === "equipment"
+    ? siteData.equipment
+    : siteData.projects;
+
+  const items = collection.filter(
+    item => (item.category || "Общие работы") === category
+  );
+
+  $("galleryTitle").textContent = category;
+
+  $("galleryGrid").innerHTML = items.map(item => `
+    <article class="gallery-photo">
+
+      ${item.image
+        ? `<img src="${escapeHtml(item.image)}"
+             alt="${escapeHtml(item.title)}"
+             loading="lazy">`
+        : ""}
+
+      <div class="gallery-photo-info">
+        <h3>${escapeHtml(item.title)}</h3>
+
+        ${type === "equipment" && item.price
+          ? `<div class="equipment-price">
+               ${Number(item.price).toLocaleString("ru-RU")} ₸
+             </div>`
+          : ""}
+
+        <p>${escapeHtml(item.description || "")}</p>
+
+        ${type === "equipment"
+          ? <p class="muted">Цена и наличие уточняйте у специалиста</p>
+          : ""}
+      </div>
+    </article>
+  `).join("") || '<p class="gallery-empty">Фотографии пока не добавлены.</p>';
+
+  $("galleryModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeGallery() {
+  $("galleryModal").classList.remove("open");
+  document.body.style.overflow = "";
+} {
   const s = siteData.site || DEFAULT_DATA.site;
   $("heroEyebrow").textContent = s.eyebrow || "";
   $("mainTitle").textContent = s.title || "";
