@@ -407,7 +407,31 @@ function renderSite() {
   $("projectGallery").innerHTML = (siteData.projects || []).map(item => `
     <article class="project">${item.image ? `<img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy">` : ""}
       <div class="project-content"><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p></div></article>`).join("");
-  $("projectsEmpty").classList.toggle("hidden", (siteData.projects || []).length > 0);
+ // КАТАЛОГ ОБОРУДОВАНИЯ — ПАПКИ
+  const equipmentGroups = groupByCategory(siteData.equipment || []);
+
+  $("equipmentGrid").innerHTML = renderFolders(
+    equipmentGroups,
+    "equipment"
+  );
+
+  $("equipmentEmpty").classList.toggle(
+    "hidden",
+    (siteData.equipment || []).length > 0
+  );
+
+  // НАШИ РАБОТЫ — ПАПКИ
+  const projectGroups = groupByCategory(siteData.projects || []);
+
+  $("projectGallery").innerHTML = renderFolders(
+    projectGroups,
+    "projects"
+  );
+
+  $("projectsEmpty").classList.toggle(
+    "hidden",
+    (siteData.projects || []).length > 0
+  );
   $("advantagesGrid").innerHTML = (siteData.advantages || []).map(a => `<div class="advantage"><strong>${escapeHtml(a.value)}</strong>${escapeHtml(a.label)}</div>`).join("");
   $("clientService").innerHTML = '<option value="">Выберите услугу</option>' +
     (siteData.services || []).map(x => `<option>${escapeHtml(x.title)}</option>`).join("") +
